@@ -4,7 +4,7 @@ require 'open-uri'
   module RailsConnection
     module CurrencyExchange
 
-####################### ACTMETHODS
+##################### ACTMETHODS
 
        module ActMethods
 
