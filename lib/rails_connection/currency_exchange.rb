@@ -48,7 +48,10 @@ class CurrencyExchange
      #private
 
      def self.newest_currency_rates?(currency,base_currency, time_now)
-       if (time_now.wday != 6 && time_now.wday != 0) && (time_now.wday > currency.issued_on.wday || time_now.wday > base_currency.issued_on.wday) then ExchangeRateParser.request_rates(ExchangeRateParser.request_url_name) end
+       if ((time_now.wday != 6 && time_now.wday != 0) && (time_now.yday > currency.issued_on.yday || time_now.yday > base_currency.issued_on.yday))
+          ExchangeRateParser.request_rates(ExchangeRateParser.request_url_name)
+          puts 'RATES UPDATED ONLINE time_now: ' + time_now.yday.to_s + " currency time: " + currency.issued_on.yday.to_s
+       end
      end
 
      def self.convert(from_currency,to_currency,amount)
